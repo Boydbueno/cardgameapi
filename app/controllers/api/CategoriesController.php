@@ -1,8 +1,10 @@
 <?php namespace controllers\api;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Category;
 
 use Response;
+
 
 class CategoriesController extends \BaseController {
 
@@ -41,6 +43,24 @@ class CategoriesController extends \BaseController {
 		return Response::json(array(
 			'message' => 'You are not allowed to send a PUT request to the categories collection. Did you forget to add an id?'
 		), 405);
+	}
+
+	/*
+	|---------------------------------------------------------------------------
+	| Single actions
+	|---------------------------------------------------------------------------
+	*/
+
+	public function getShow($id)
+	{
+
+		try {
+			return Category::findOrFail($id);
+		} catch(ModelNotFoundException $e) {
+		    return Response::json(array(
+		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please check double check the id'
+	    	), 404);
+		}
 	}
 
 }

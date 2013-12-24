@@ -17,6 +17,8 @@ Route::group(array('prefix' => 'api'), function()
 			Route::post('/', 'controllers\api\CategoriesController@postIndex');
 			Route::put('/', 'controllers\api\CategoriesController@putIndex');
 			Route::delete('/', 'controllers\api\CategoriesController@deleteIndex');
+
+			Route::get('{id}', 'controllers\api\CategoriesController@getShow');
 		});
 		
 	});
