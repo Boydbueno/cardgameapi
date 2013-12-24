@@ -6,6 +6,12 @@ use Response;
 
 class CategoriesController extends \BaseController {
 
+	/*
+	|---------------------------------------------------------------------------
+	| Collection actions
+	|---------------------------------------------------------------------------
+	*/
+
 	public function getIndex()
 	{
 		return Category::all();
@@ -13,6 +19,7 @@ class CategoriesController extends \BaseController {
 
 	public function postIndex()
 	{
+		// TODO: Implement creating new category
 		// This route will need authorization
 		
 		// If this request is send by a user, it'll be added to the user categories
