@@ -1,0 +1,6 @@
+---
+version: 1
+strategy: fullsync
+excludes:
+    - app/storage/
+    - vendor/
