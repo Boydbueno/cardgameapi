@@ -20,8 +20,6 @@ Route::group(array('prefix' => 'api'), function()
 		Route::group(array('prefix' => 'categories'), function()
 		{
 
-			Route::get('{id}', 'controllers\api\CategoriesController@getShow');
-
 			/*
 			|---------------------------------------------------------------------------
 			| Category collection routes
@@ -48,6 +46,15 @@ Route::group(array('prefix' => 'api'), function()
 					'message' => 'You are not allowed to send a DELETE request to the categories collection. Did you forget to add an id?'
 				), 405);
 			});
+
+			/*
+			|---------------------------------------------------------------------------
+			| Single Categorie routes
+			|---------------------------------------------------------------------------
+			*/
+		
+			Route::get('{id}', 'controllers\api\CategoriesController@show');
+
 		});
 		
 	});

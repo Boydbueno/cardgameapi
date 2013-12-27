@@ -37,7 +37,7 @@ class CategoriesController extends \BaseController {
 	|---------------------------------------------------------------------------
 	*/
 
-	public function getShow($id)
+	public function show($id)
 	{
 
 		try {
