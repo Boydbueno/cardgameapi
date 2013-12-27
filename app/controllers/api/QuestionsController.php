@@ -10,6 +10,15 @@ class QuestionsController extends \BaseController {
 		return Question::all();
 	}
 
+	public function create()
+	{
+		// TODO: Implement creating new Question
+		
+		return Response::json(array(
+			'message' => 'It is not possible to create new questions yet. This is a future feature.'
+		), 501);
+	}
+
 	public function show($id) {
 		try {
 			return Question::findOrFail($id);

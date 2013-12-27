@@ -75,6 +75,7 @@ Route::group(array('prefix' => 'api'), function()
 		{
 
 			Route::get('/', 'controllers\api\QuestionsController@index');
+			Route::post('/', 'controllers\api\QuestionsController@create');
 
 			Route::get('{id}', 'controllers\api\QuestionsController@show');
 
