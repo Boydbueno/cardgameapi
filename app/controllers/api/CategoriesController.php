@@ -43,7 +43,7 @@ class CategoriesController extends \BaseController {
 			return Category::findOrFail($id);
 		} catch(ModelNotFoundException $e) {
 		    return Response::json(array(
-		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please check double check the id'
+		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 	    	), 404);
 		}
 	}
