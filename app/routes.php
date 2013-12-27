@@ -31,6 +31,16 @@ Route::group(array('prefix' => 'api'), function()
 
 			/*
 			|---------------------------------------------------------------------------
+			| Single Categorie routes
+			|---------------------------------------------------------------------------
+			*/
+		
+			Route::get('{id}', 'controllers\api\CategoriesController@show');
+			Route::put('{id}', 'controllers\api\CategoriesController@update');
+			Route::delete('{id}', 'controllers\api\CategoriesController@delete');
+
+			/*
+			|---------------------------------------------------------------------------
 			| Not allowed routes
 			|---------------------------------------------------------------------------
 			*/
@@ -46,6 +56,13 @@ Route::group(array('prefix' => 'api'), function()
 					'message' => 'You are not allowed to send a DELETE request to the categories collection. Did you forget to add an id?'
 				), 405);
 			});
+
+			Route::post('{id}', function() {
+				return Response::json(array(
+					'message' => 'You are not allowed to send a POST request to a specific category. Did you mean to add a new category to the collection?'
+				), 405);
+			});
+
 		});
 		
 	});
