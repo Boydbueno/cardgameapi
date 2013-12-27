@@ -55,4 +55,11 @@ class CategoriesController extends \BaseController {
 		), 501);
 	}
 
+	public function delete($id)
+	{
+		return Response::json(array(
+			'message' => 'It is not possible to delete a category yet. This is a future feature.'
+		), 501);
+	}
+
 }
