@@ -5,7 +5,7 @@ use Question;
 class QuestionsController extends \BaseController {
 
 	public function index() {
-		return "All questions";
+		return Question::all();
 	}
 
 	public function show($id) {
