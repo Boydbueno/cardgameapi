@@ -1,0 +1,9 @@
+---
+version: 1
+strategy: fullsync
+excludes:
+    - app/storage/
+    - vendor/
+composer:
+	mode: always
+	method: update
