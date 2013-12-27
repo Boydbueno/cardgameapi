@@ -47,21 +47,56 @@ Route::group(array('prefix' => 'api'), function()
 
 			Route::put('/', function() {
 				return Response::json(array(
-					'message' => 'You are not allowed to send a PUT request to the categories collection. Did you forget to add an id?'
+					'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
 				), 405);
 			});
 
 			Route::delete('/', function() {
 				return Response::json(array(
-					'message' => 'You are not allowed to send a DELETE request to the categories collection. Did you forget to add an id?'
+					'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
 				), 405);
 			});
 
 			Route::post('{id}', function() {
 				return Response::json(array(
-					'message' => 'You are not allowed to send a POST request to a specific category. Did you mean to add a new category to the collection?'
+					'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
 				), 405);
 			});
+
+		});
+
+		/*
+		|---------------------------------------------------------------------------
+		| Question routes
+		|---------------------------------------------------------------------------
+		*/
+	
+		Route::group(array('prefix' => 'questions'), function()
+		{
+
+			Route::get('/', 'controllers\api\QuestionsController@index');
+			Route::post('/', 'controllers\api\QuestionsController@create');
+
+			Route::get('{id}', 'controllers\api\QuestionsController@show');
+
+			Route::put('/', function() {
+				return Response::json(array(
+					'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
+				), 405);
+			});
+
+			Route::delete('/', function() {
+				return Response::json(array(
+					'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
+				), 405);
+			});
+
+			Route::post('{id}', function() {
+				return Response::json(array(
+					'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
+				), 405);
+			});
+
 
 		});
 		
