@@ -39,7 +39,6 @@ class CategoriesController extends \BaseController {
 
 	public function show($id)
 	{
-
 		try {
 			return Category::findOrFail($id);
 		} catch(ModelNotFoundException $e) {
@@ -47,6 +46,13 @@ class CategoriesController extends \BaseController {
 		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please check double check the id'
 	    	), 404);
 		}
+	}
+
+	public function update($id)
+	{
+		return Response::json(array(
+			'message' => 'It is not possible to update a category yet. This is a future feature.'
+		), 501);
 	}
 
 }

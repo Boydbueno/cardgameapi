@@ -54,6 +54,7 @@ Route::group(array('prefix' => 'api'), function()
 			*/
 		
 			Route::get('{id}', 'controllers\api\CategoriesController@show');
+			Route::put('{id}', 'controllers\api\CategoriesController@update');
 
 		});
 		
