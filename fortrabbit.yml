@@ -5,5 +5,5 @@ excludes:
     - app/storage/
     - vendor/
 composer:
-	mode: always
-	method: update
+    mode: always
+    method: update
