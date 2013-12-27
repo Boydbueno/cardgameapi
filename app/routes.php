@@ -78,6 +78,25 @@ Route::group(array('prefix' => 'api'), function()
 
 			Route::get('{id}', 'controllers\api\QuestionsController@show');
 
+			Route::put('/', function() {
+				return Response::json(array(
+					'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
+				), 405);
+			});
+
+			Route::delete('/', function() {
+				return Response::json(array(
+					'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
+				), 405);
+			});
+
+			Route::post('{id}', function() {
+				return Response::json(array(
+					'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
+				), 405);
+			});
+
+
 		});
 		
 	});
