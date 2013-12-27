@@ -64,6 +64,19 @@ Route::group(array('prefix' => 'api'), function()
 			});
 
 		});
+
+		/*
+		|---------------------------------------------------------------------------
+		| Question routes
+		|---------------------------------------------------------------------------
+		*/
+	
+		Route::group(array('prefix' => 'questions'), function()
+		{
+
+			Route::get('/', 'controllers\api\QuestionsController@index');
+
+		});
 		
 	});
 
