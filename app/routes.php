@@ -76,6 +76,8 @@ Route::group(array('prefix' => 'api'), function()
 
 			Route::get('/', 'controllers\api\QuestionsController@index');
 
+			Route::get('{id}', 'controllers\api\QuestionsController@show');
+
 		});
 		
 	});
