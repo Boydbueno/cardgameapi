@@ -97,8 +97,9 @@ Route::group(array('prefix' => 'api'), function()
 				), 405);
 			});
 
-
 		});
+
+		Route::get('categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
 		
 	});
 

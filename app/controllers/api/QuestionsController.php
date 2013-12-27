@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Question;
+use Category;
 use Response;
 
 class QuestionsController extends \BaseController {
@@ -19,7 +20,19 @@ class QuestionsController extends \BaseController {
 		), 501);
 	}
 
-	public function show($id) {
+	public function byCategory($id)
+	{
+		try {
+			return Category::findOrFail($id)->questions;
+		} catch(ModelNotFoundException $e) {
+			return Response::json(array(
+				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
+			), 404);
+		}
+	}
+
+	public function show($id) 
+	{
 		try {
 			return Question::findOrFail($id);
 		} catch(ModelNotFoundException $e) {
