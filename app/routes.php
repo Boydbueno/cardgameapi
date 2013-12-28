@@ -77,6 +77,8 @@ Route::group(array('prefix' => 'api'), function()
 			Route::get('/', 'controllers\api\QuestionsController@index');
 			Route::post('/', 'controllers\api\QuestionsController@create');
 
+			Route::get('random', 'controllers\api\QuestionsController@random');
+
 			Route::get('{id}', 'controllers\api\QuestionsController@show');
 
 			Route::put('/', function() {
@@ -96,6 +98,7 @@ Route::group(array('prefix' => 'api'), function()
 					'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
 				), 405);
 			});
+
 
 		});
 

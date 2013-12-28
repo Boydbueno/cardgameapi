@@ -42,4 +42,9 @@ class QuestionsController extends \BaseController {
 		}
 	}
 
+	public function random()
+	{
+		return Question::orderBy(\DB::raw('RAND()'))->get()->first();
+	}
+
 }
