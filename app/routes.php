@@ -77,6 +77,8 @@ Route::group(array('prefix' => 'api'), function()
 			Route::get('/', 'controllers\api\QuestionsController@index');
 			Route::post('/', 'controllers\api\QuestionsController@create');
 
+			Route::get('random', 'controllers\api\QuestionsController@random');
+
 			Route::get('{id}', 'controllers\api\QuestionsController@show');
 
 			Route::put('/', function() {
@@ -97,9 +99,11 @@ Route::group(array('prefix' => 'api'), function()
 				), 405);
 			});
 
+
 		});
 
 		Route::get('categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
+		Route::get('categories/{id}/questions/random', 'controllers\api\QuestionsController@randomByCategory');
 		
 	});
 

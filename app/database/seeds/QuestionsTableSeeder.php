@@ -10,15 +10,27 @@ class QuestionsTableSeeder extends Seeder {
 		$questions = array(
 			array(
 				'question' => 'This will be a math question'
+			),			
+			array(
+				'question' => 'This will be another math question'
 			),
 			array(
 				'question' => 'This will be a science question'
 			),
 			array(
+				'question' => 'This will be another science question'
+			),
+			array(
 				'question' => 'This will be a food question'
 			),
 			array(
+				'question' => 'This will be another food question'
+			),
+			array(
 				'question' => 'This will be a history question'
+			),
+			array(
+				'question' => 'This will be another history question'
 			)
 		);
 

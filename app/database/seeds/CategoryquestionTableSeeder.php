@@ -13,16 +13,32 @@ class CategoryquestionTableSeeder extends Seeder {
 				'question_id' => Question::whereQuestion('This will be a math question')->first()->id
 			),
 			array(
+				'category_id' => Category::whereLabel('Math')->first()->id,
+				'question_id' => Question::whereQuestion('This will be another math question')->first()->id
+			),
+			array(
 				'label' => Category::whereLabel('Science')->first()->id,
 				'question_id' => Question::whereQuestion('This will be a science question')->first()->id
+			),
+			array(
+				'label' => Category::whereLabel('Science')->first()->id,
+				'question_id' => Question::whereQuestion('This will be another science question')->first()->id
 			),
 			array(
 				'label' => Category::whereLabel('Food')->first()->id,
 				'question_id' => Question::whereQuestion('This will be a food question')->first()->id
 			),
 			array(
+				'label' => Category::whereLabel('Food')->first()->id,
+				'question_id' => Question::whereQuestion('This will be another food question')->first()->id
+			),
+			array(
 				'label' => Category::whereLabel('History')->first()->id,
 				'question_id' => Question::whereQuestion('This will be a history question')->first()->id
+			),
+			array(
+				'label' => Category::whereLabel('History')->first()->id,
+				'question_id' => Question::whereQuestion('This will be another history question')->first()->id
 			)
 		);
 
