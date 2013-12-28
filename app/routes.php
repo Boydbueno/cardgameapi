@@ -103,6 +103,7 @@ Route::group(array('prefix' => 'api'), function()
 		});
 
 		Route::get('categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
+		Route::get('categories/{id}/questions/random', 'controllers\api\QuestionsController@randomByCategory');
 		
 	});
 

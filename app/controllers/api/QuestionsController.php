@@ -47,4 +47,9 @@ class QuestionsController extends \BaseController {
 		return Question::orderBy(\DB::raw('RAND()'))->get()->first();
 	}
 
+	public function randomByCategory($categoryId)
+	{
+		return Category::find($categoryId)->questions()->orderBy(\DB::raw('RAND()'))->get()->first();
+	}
+
 }
