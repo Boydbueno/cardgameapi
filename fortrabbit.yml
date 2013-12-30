@@ -5,5 +5,10 @@ excludes:
     - app/storage/
     - vendor/
 composer:
-    mode: always
-    method: update
+    mode: trigger
+    method: install
+post-deploy:
+	script: artisan
+	args:
+		- migrate
+		- --seed
