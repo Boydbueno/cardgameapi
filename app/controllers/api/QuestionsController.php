@@ -4,11 +4,14 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Question;
 use Category;
 use Response;
+use Input;
 
 class QuestionsController extends \BaseController {
 
 	public function index() {
-		return Question::all();
+		$response = Response::json(Question::all());
+		
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 	public function create()
