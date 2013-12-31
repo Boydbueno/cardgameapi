@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Category;
 
+use Input;
 use Response;
 
 
@@ -16,7 +17,9 @@ class CategoriesController extends \BaseController {
 
 	public function index()
 	{
-		return Category::all();
+		$response = Response::json(Category::all());
+
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 	public function create()
@@ -26,9 +29,11 @@ class CategoriesController extends \BaseController {
 		
 		// If this request is send by a user, it'll be added to the user categories
 		
-		return Response::json(array(
+		$response = Response::json(array(
 			'message' => 'It is not possible to create new categories yet. This is a future feature.'
 		), 501);
+
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 	/*
@@ -40,26 +45,34 @@ class CategoriesController extends \BaseController {
 	public function show($id)
 	{
 		try {
-			return Category::findOrFail($id);
+			$response = Response::json(Category::findOrFail($id));
+
+			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 		} catch(ModelNotFoundException $e) {
-		    return Response::json(array(
+		    $response = Response::json(array(
 		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 	    	), 404);
+
+			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 		}
 	}
 
 	public function update($id)
 	{
-		return Response::json(array(
+		$response = Response::json(array(
 			'message' => 'It is not possible to update a category yet. This is a future feature.'
 		), 501);
+
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 	public function delete($id)
 	{
-		return Response::json(array(
+		$response = Response::json(array(
 			'message' => 'It is not possible to delete a category yet. This is a future feature.'
 		), 501);
+
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 }

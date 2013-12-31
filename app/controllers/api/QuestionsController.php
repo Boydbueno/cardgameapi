@@ -18,41 +18,55 @@ class QuestionsController extends \BaseController {
 	{
 		// TODO: Implement creating new Question
 		
-		return Response::json(array(
+		$response = Response::json(array(
 			'message' => 'It is not possible to create new questions yet. This is a future feature.'
 		), 501);
+
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 	public function byCategory($id)
 	{
 		try {
-			return Category::findOrFail($id)->questions;
+			$response = Response::json(Category::findOrFail($id)->questions);
+
+			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 		} catch(ModelNotFoundException $e) {
-			return Response::json(array(
+			$response = Response::json(array(
 				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 			), 404);
+
+			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 		}
 	}
 
 	public function show($id) 
 	{
 		try {
-			return Question::findOrFail($id);
+			$response = Response::json(Question::findOrFail($id));
+
+			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 		} catch(ModelNotFoundException $e) {
-		    return Response::json(array(
+		    $response = Response::json(array(
 		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 	    	), 404);
+
+			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 		}
 	}
 
 	public function random()
 	{
-		return Question::orderBy(\DB::raw('RAND()'))->get()->first();
+		$response = Response::json(Question::orderBy(\DB::raw('RAND()'))->get()->first());
+
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 	public function randomByCategory($categoryId)
 	{
-		return Category::find($categoryId)->questions()->orderBy(\DB::raw('RAND()'))->get()->first();
+		$response = Response::json(Category::find($categoryId)->questions()->orderBy(\DB::raw('RAND()'))->get()->first());
+		
+		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 }
