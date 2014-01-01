@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Category;
 
+use Input;
 use Response;
 
 
@@ -16,7 +17,9 @@ class CategoriesController extends \BaseController {
 
 	public function index()
 	{
-		return Category::all();
+
+		return Response::jsonOrJsonp(Category::all());
+
 	}
 
 	public function create()
@@ -26,7 +29,7 @@ class CategoriesController extends \BaseController {
 		
 		// If this request is send by a user, it'll be added to the user categories
 		
-		return Response::json(array(
+		return Response::jsonOrJsonp(array(
 			'message' => 'It is not possible to create new categories yet. This is a future feature.'
 		), 501);
 	}
@@ -40,24 +43,28 @@ class CategoriesController extends \BaseController {
 	public function show($id)
 	{
 		try {
-			return Category::findOrFail($id);
+
+			return Response::jsonOrJsonp(Category::findOrFail($id));
+
 		} catch(ModelNotFoundException $e) {
-		    return Response::json(array(
+
+		    return Response::jsonOrJsonp(array(
 		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 	    	), 404);
+
 		}
 	}
 
 	public function update($id)
 	{
-		return Response::json(array(
+		return Response::jsonOrJsonp(array(
 			'message' => 'It is not possible to update a category yet. This is a future feature.'
 		), 501);
 	}
 
 	public function delete($id)
 	{
-		return Response::json(array(
+		return Response::jsonOrJsonp(array(
 			'message' => 'It is not possible to delete a category yet. This is a future feature.'
 		), 501);
 	}
