@@ -87,3 +87,13 @@ require app_path().'/filters.php';
 */
 
 require app_path().'/bindings.php';
+
+Response::macro('jsonOrJsonp', function($value) 
+{
+
+	if(Input::get('callback'))
+		return Response::json($value)->setCallback(Input::get('callback'));
+	else
+		return Response::json($value);
+
+});

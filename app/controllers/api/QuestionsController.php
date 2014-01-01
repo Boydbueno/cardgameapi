@@ -20,21 +20,16 @@ class QuestionsController extends \BaseController {
 
 		$questions = $this->question->getAll();
 
-		$response = Response::json($questions);
-		// return Response::jsonOrJsonp($questions);
-		
-		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
+		return Response::jsonOrJsonp($questions);
 	}
 
 	public function create()
 	{
 		// TODO: Implement creating new Question
 		
-		$response = Response::json(array(
+		return Response::jsonOrJsonp(array(
 			'message' => 'It is not possible to create new questions yet. This is a future feature.'
 		), 501);
-
-		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 	}
 
 	public function byCategory($id)
@@ -42,15 +37,15 @@ class QuestionsController extends \BaseController {
 		try {
 
 			$questions = $this->question->findByCategory($id);
-			$response = Response::json($questions);
 
-			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
+			return Response::jsonOrJsonp($questions);
+		
 		} catch(ModelNotFoundException $e) {
-			$response = Response::json(array(
+		
+			return Response::jsonOrJsonp(array(
 				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 			), 404);
 
-			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 		}
 	}
 
@@ -59,17 +54,14 @@ class QuestionsController extends \BaseController {
 		try {
 
 			$question = $this->question->find($id);
-			$response = Response::json($question);
 
-			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
+			return Response::jsonOrJsonp($question);
 
 		} catch(ModelNotFoundException $e) {
 
-		    $response = Response::json(array(
+		    return Response::jsonOrJsonp(array(
 		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 	    	), 404);
-
-			return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
 
 		}
 	}
@@ -79,17 +71,14 @@ class QuestionsController extends \BaseController {
 
 		$randomQuestion = $this->question->random();
 
-		$response = Response::json($randomQuestion);
-
-		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
+		return Response::jsonOrJsonp($randomQuestion);
 	}
 
 	public function randomByCategory($id)
 	{
 		$randomQuestion = $this->question->randomByCategory($id);
-		$response = Response::json($randomQuestion);
 		
-		return (Input::get('callback')) ? $response->setCallback(Input::get('callback')) : $response;
+		return Response::jsonOrJsonp($randomQuestion);
 	}
 
 }
