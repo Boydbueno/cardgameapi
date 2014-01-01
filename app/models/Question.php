@@ -7,4 +7,9 @@ class Question extends Eloquent {
 		return $this->belongsToMany('Category');
 	}
 
+	public function answers()
+	{
+		return $this->hasMany('Answer');
+	}
+
 }
