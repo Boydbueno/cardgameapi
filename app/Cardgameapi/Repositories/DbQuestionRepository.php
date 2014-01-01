@@ -13,7 +13,7 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 
 	public function getAll()
 	{
-		return Question::all();
+		return Question::with('answers')->get();
 	}
 
 	public function find($id)
@@ -28,7 +28,7 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 
 	public function findByCategory($id)
 	{
-		return \Category::findOrFail($id)->questions;
+		return \Category::findOrFail($id)->questions()->with('answers')->get();
 	}
 
 	public function randomByCategory($id)
