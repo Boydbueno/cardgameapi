@@ -4,6 +4,13 @@ use Question;
 
 class DbQuestionRepository implements QuestionRepositoryInterface {
 
+	protected $category;
+
+	public function __construct(CategoryRepositoryInterface $category)
+	{
+		$this->category = $category;
+	}
+
 	public function getAll()
 	{
 		return Question::all();

@@ -2,6 +2,7 @@
 
 interface QuestionRepositoryInterface {
 
+	public function __construct(CategoryRepositoryInterface $category);
 	public function getAll();
 	public function find($id);
 	public function random();

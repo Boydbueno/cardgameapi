@@ -1,6 +1,7 @@
 <?php namespace controllers\api;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Cardgameapi\Repositories\CategoryRepositoryInterface;
 use Category;
 
 use Input;
@@ -8,6 +9,13 @@ use Response;
 
 
 class CategoriesController extends \BaseController {
+
+	protected $category;
+
+	public function __construct(CategoryRepositoryInterface $category)
+	{
+		$this->category = $category;
+	}
 
 	/*
 	|---------------------------------------------------------------------------
@@ -17,9 +25,9 @@ class CategoriesController extends \BaseController {
 
 	public function index()
 	{
+		$response = $this->category->getAll();
 
-		return Response::jsonOrJsonp(Category::all());
-
+		return Response::jsonOrJsonp($response);
 	}
 
 	public function create()
@@ -44,7 +52,9 @@ class CategoriesController extends \BaseController {
 	{
 		try {
 
-			return Response::jsonOrJsonp(Category::findOrFail($id));
+			$response = $this->category->find($id);
+
+			return Response::jsonOrJsonp($response);
 
 		} catch(ModelNotFoundException $e) {
 
