@@ -23,7 +23,7 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 
 	public function random()
 	{
-		return Question::orderBy(\DB::raw('RAND()'))->get()->first();
+		return Question::orderBy(\DB::raw('RAND()'))->with('answers')->get()->first();
 	}
 
 	public function findByCategory($id)
