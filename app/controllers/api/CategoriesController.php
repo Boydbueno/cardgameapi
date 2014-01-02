@@ -1,12 +1,21 @@
 <?php namespace controllers\api;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Cardgameapi\Repositories\CategoryRepositoryInterface;
 use Category;
 
+use Input;
 use Response;
 
 
 class CategoriesController extends \BaseController {
+
+	protected $category;
+
+	public function __construct(CategoryRepositoryInterface $category)
+	{
+		$this->category = $category;
+	}
 
 	/*
 	|---------------------------------------------------------------------------
@@ -16,7 +25,9 @@ class CategoriesController extends \BaseController {
 
 	public function index()
 	{
-		return Category::all();
+		$response = $this->category->getAll();
+
+		return Response::jsonOrJsonp($response);
 	}
 
 	public function create()
@@ -26,7 +37,7 @@ class CategoriesController extends \BaseController {
 		
 		// If this request is send by a user, it'll be added to the user categories
 		
-		return Response::json(array(
+		return Response::jsonOrJsonp(array(
 			'message' => 'It is not possible to create new categories yet. This is a future feature.'
 		), 501);
 	}
@@ -40,24 +51,30 @@ class CategoriesController extends \BaseController {
 	public function show($id)
 	{
 		try {
-			return Category::findOrFail($id);
+
+			$response = $this->category->find($id);
+
+			return Response::jsonOrJsonp($response);
+
 		} catch(ModelNotFoundException $e) {
-		    return Response::json(array(
+
+		    return Response::jsonOrJsonp(array(
 		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
 	    	), 404);
+
 		}
 	}
 
 	public function update($id)
 	{
-		return Response::json(array(
+		return Response::jsonOrJsonp(array(
 			'message' => 'It is not possible to update a category yet. This is a future feature.'
 		), 501);
 	}
 
 	public function delete($id)
 	{
-		return Response::json(array(
+		return Response::jsonOrJsonp(array(
 			'message' => 'It is not possible to delete a category yet. This is a future feature.'
 		), 501);
 	}
