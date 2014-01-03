@@ -16,8 +16,8 @@ class QuestionsController extends \BaseController {
 		$this->question = $question;
 	}
 
-	public function index() {
-
+	public function index() 
+	{
 		$questions = $this->question->getAll();
 
 		return Response::jsonOrJsonp($questions);
@@ -68,7 +68,6 @@ class QuestionsController extends \BaseController {
 
 	public function random()
 	{
-
 		$randomQuestion = $this->question->random();
 
 		return Response::jsonOrJsonp($randomQuestion);
