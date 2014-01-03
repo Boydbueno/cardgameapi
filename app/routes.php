@@ -1,110 +1,78 @@
 <?php
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-
-Route::group(array('prefix' => 'api'), function() 
+Route::group(array('prefix' => 'api/v0.1'), function()
 {
 
-	Route::group(array('prefix' => 'v0.1'), function()
-	{
+	/*
+	|---------------------------------------------------------------------------
+	| Category routes
+	|---------------------------------------------------------------------------
+	*/
 
-		/*
-		|---------------------------------------------------------------------------
-		| Category routes
-		|---------------------------------------------------------------------------
-		*/
+	# Category collection routes
+	Route::get('categories', 'controllers\api\CategoriesController@index');
+	Route::post('categories', 'controllers\api\CategoriesController@create');
 
-		Route::group(array('prefix' => 'categories'), function()
-		{
+	# Single Categorie routes
+	Route::get('categories/{id}', 'controllers\api\CategoriesController@show');
+	Route::put('categories/{id}', 'controllers\api\CategoriesController@update');
+	Route::delete('categories/{id}', 'controllers\api\CategoriesController@delete');
 
-			/*
-			|---------------------------------------------------------------------------
-			| Category collection routes
-			|---------------------------------------------------------------------------
-			*/
-
-			Route::get('/', 'controllers\api\CategoriesController@index');
-			Route::post('/', 'controllers\api\CategoriesController@create');
-
-			/*
-			|---------------------------------------------------------------------------
-			| Single Categorie routes
-			|---------------------------------------------------------------------------
-			*/
-		
-			Route::get('{id}', 'controllers\api\CategoriesController@show');
-			Route::put('{id}', 'controllers\api\CategoriesController@update');
-			Route::delete('{id}', 'controllers\api\CategoriesController@delete');
-
-			/*
-			|---------------------------------------------------------------------------
-			| Not allowed routes
-			|---------------------------------------------------------------------------
-			*/
-
-			Route::put('/', function() {
-				return Response::json(array(
-					'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
-				), 405);
-			});
-
-			Route::delete('/', function() {
-				return Response::json(array(
-					'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
-				), 405);
-			});
-
-			Route::post('{id}', function() {
-				return Response::json(array(
-					'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
-				), 405);
-			});
-
-		});
-
-		/*
-		|---------------------------------------------------------------------------
-		| Question routes
-		|---------------------------------------------------------------------------
-		*/
-	
-		Route::group(array('prefix' => 'questions'), function()
-		{
-
-			Route::get('/', 'controllers\api\QuestionsController@index');
-			Route::post('/', 'controllers\api\QuestionsController@create');
-
-			Route::get('random', 'controllers\api\QuestionsController@random');
-
-			Route::get('{id}', 'controllers\api\QuestionsController@show');
-
-			Route::put('/', function() {
-				return Response::json(array(
-					'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
-				), 405);
-			});
-
-			Route::delete('/', function() {
-				return Response::json(array(
-					'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
-				), 405);
-			});
-
-			Route::post('{id}', function() {
-				return Response::json(array(
-					'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
-				), 405);
-			});
-
-
-		});
-
-		Route::get('categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
-		Route::get('categories/{id}/questions/random', 'controllers\api\QuestionsController@randomByCategory');
-		
+	# Not allowed routes
+	Route::put('categories', function() {
+		return Response::json(array(
+			'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
+		), 405);
 	});
 
+	Route::delete('categories', function() {
+		return Response::json(array(
+			'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
+		), 405);
+	});
+
+	Route::post('categories/{id}', function() {
+		return Response::json(array(
+			'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
+		), 405);
+	});
+
+	/*
+	|---------------------------------------------------------------------------
+	| Question routes
+	|---------------------------------------------------------------------------
+	*/
+
+	# Question collection routes
+	Route::get('questions', 'controllers\api\QuestionsController@index');
+	Route::post('questions', 'controllers\api\QuestionsController@create');
+
+	# Single question routes
+	Route::get('questions/{id}', 'controllers\api\QuestionsController@show');
+	Route::get('questions/categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
+
+	# Random question
+	Route::get('questions/random', 'controllers\api\QuestionsController@random');
+	# Random question 
+	Route::get('questions/categories/{id}/questions/random', 'controllers\api\QuestionsController@randomByCategory');
+
+	# Not allowed routes
+	Route::put('questions', function() {
+		return Response::json(array(
+			'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
+		), 405);
+	});
+
+	Route::delete('questions', function() {
+		return Response::json(array(
+			'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
+		), 405);
+	});
+
+	Route::post('questions/{id}', function() {
+		return Response::json(array(
+			'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
+		), 405);
+	});
+	
 });
