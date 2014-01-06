@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('Boyd-PC'),
+	'local' => array('Boyd-PC', 'Boyd-VAIO'),
 
 ));
 
