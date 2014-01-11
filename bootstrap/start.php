@@ -11,7 +11,8 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application;
+$request = Cardgameapi\Http\Request::createFromGlobals();
+$app = new Illuminate\Foundation\Application($request);
 
 /*
 |--------------------------------------------------------------------------
