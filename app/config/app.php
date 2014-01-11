@@ -107,6 +107,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+		'Cardgameapi\XML\XMLServiceProvider',
+
 	),
 
 	/*
@@ -172,6 +174,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+
+		'XML' => 'Cardgameapi\XML\Xml'
 
 	),
 
