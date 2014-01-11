@@ -5,6 +5,7 @@ use Cardgameapi\Repositories\QuestionRepositoryInterface;
 use Question;
 use Category;
 use Response;
+use Request;
 use Input;
 
 class QuestionsController extends \BaseController {
@@ -19,6 +20,10 @@ class QuestionsController extends \BaseController {
 	public function index() 
 	{
 		$questions = $this->question->getAll();
+
+		if(Request::wantsXML()) {
+			return Response::XML($questions);
+		}
 
 		return Response::jsonOrJsonp($questions);
 	}

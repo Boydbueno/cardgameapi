@@ -12,3 +12,10 @@ Response::macro('jsonOrJsonp', function($value, $statusCode = "200", $headers = 
 
 	return $response;
 });
+
+Response::macro('XML', function($value, $statusCode = 200, $headers = [])
+{
+	$data = $value->toArray();
+
+	return Cardgameapi\XML\XML::create($data);
+});
