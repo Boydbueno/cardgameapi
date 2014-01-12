@@ -84,5 +84,17 @@ Route::group(array('prefix' => 'api/v1'), function()
 			'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
 		), 405);
 	});
+
+	/*
+	|---------------------------------------------------------------------------
+	| User routes
+	|---------------------------------------------------------------------------
+	*/
+
+	Route::get('users', 'controllers\api\UsersController@index');
+	Route::post('users', 'controllers\api\UsersController@create');
+
+	Route::get('users/{id}', 'controllers\api\UsersController@show');
+
 	
 });
