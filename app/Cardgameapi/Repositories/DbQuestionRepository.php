@@ -18,7 +18,7 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 
 	public function find($id)
 	{
-		return Question::findOrFail($id);
+		return Question::with('answers')->findOrFail($id);
 	}
 
 	public function random()
