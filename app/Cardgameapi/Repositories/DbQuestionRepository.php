@@ -1,6 +1,7 @@
 <?php namespace Cardgameapi\Repositories;
 
 use Question;
+use Answer;
 
 class DbQuestionRepository implements QuestionRepositoryInterface {
 
@@ -33,7 +34,25 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 
 	public function randomByCategory($id)
 	{
-		return \Category::find($id)->questions()->orderBy(\DB::raw('RAND()'))->get()->first();
+		return $this->category->find($id)->questions()->orderBy(\DB::raw('RAND()'))->get()->first();
+	}
+
+	public function create($question, $userid, Array $answers, Array $categories)
+	{
+		$newQuestion = new Question;
+		$newQuestion->question = $question;
+		$newQuestion->user_id = $userid;
+		$newQuestion->save();
+
+		$answerModels = array_map(function($answer) {
+			return new Answer(array('answer' => $answer));
+		}, $answers);
+
+		$newQuestion->answers()->saveMany($answerModels);
+
+		$newQuestion->categories()->sync($categories);
+
+		return $newQuestion;
 	}
 
 }

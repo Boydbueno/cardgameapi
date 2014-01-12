@@ -30,11 +30,27 @@ class QuestionsController extends \BaseController {
 
 	public function create()
 	{
-		// TODO: Implement creating new Question
+
+		if ( ! Input::get('user_id'))
+		{
+			return Response::jsonOrJsonp(array(
+				'message' => 'You need to supply a user_id if you wish to add a question'
+			), 400);
+		}
+
+		// TODO: Check if user id is correct
 		
-		return Response::jsonOrJsonp(array(
-			'message' => 'It is not possible to create new questions yet. This is a future feature.'
-		), 501);
+		$question = Input::get('question');
+		$user_id = Input::get('user_id');
+		$answers = json_decode(Input::get('answers'));
+		$categories = json_decode(Input::get('categories'));
+
+		$newQuestion = $this->question->create($question, $user_id, $answers, $categories);
+
+		return Response::jsonOrJsonp($newQuestion, 201, [
+			'location' => route('question.show', ['id' => $newQuestion->id])
+		]);
+		
 	}
 
 	public function byCategory($id)
