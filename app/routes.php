@@ -58,13 +58,13 @@ Route::group(array('prefix' => 'api/v1'), function()
 	Route::post('questions', 'controllers\api\QuestionsController@create');
 
 	# Single question routes
-	Route::get('questions/{id}', 'controllers\api\QuestionsController@show');
-	Route::get('questions/categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
+	Route::get('questions/{id}', ['as' => 'question.show', 'uses' => 'controllers\api\QuestionsController@show']);
+	Route::get('categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
 
 	# Random question
 	Route::get('questions/random', 'controllers\api\QuestionsController@random');
 	# Random question 
-	Route::get('questions/categories/{id}/questions/random', 'controllers\api\QuestionsController@randomByCategory');
+	Route::get('categories/{id}/questions/random', 'controllers\api\QuestionsController@randomByCategory');
 
 	# Not allowed routes
 	Route::put('questions', function() {
