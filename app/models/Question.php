@@ -12,4 +12,9 @@ class Question extends Eloquent {
 		return $this->hasMany('Answer');
 	}
 
+	public function author()
+	{
+		return $this->belongsTo('User', 'user_id');
+	}
+
 }
