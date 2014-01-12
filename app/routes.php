@@ -94,7 +94,7 @@ Route::group(array('prefix' => 'api/v1'), function()
 	Route::get('users', 'controllers\api\UsersController@index');
 	Route::post('users', 'controllers\api\UsersController@create');
 
-	Route::get('users/{id}', 'controllers\api\UsersController@show');
+	Route::get('users/{id}', ['as' => 'user.show', 'uses' => 'controllers\api\UsersController@show']);
 
 	Route::get('users/{id}/questions', 'controllers\api\QuestionsController@byUser');
 

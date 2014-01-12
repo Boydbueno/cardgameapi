@@ -21,6 +21,8 @@ class DbUserRepository implements UserRepositoryInterface {
 		$user = new User;
 		$user->username = $username;
 		$user->save();
+
+		return $user;
 	}
 
 }

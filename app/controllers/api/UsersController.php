@@ -25,11 +25,11 @@ class UsersController extends \BaseController {
 
 	public function create()
 	{
-		$this->user->create(Input::get('username'));
+		$user = $this->user->create(Input::get('username'));
 
-		return Response::jsonOrJsonp(array(
-			'message' => 'User has been succesfully created'
-		), 201);
+		return Response::jsonOrJsonp($user, 201, [
+			'location' => route('user.show', ['id' => $user->id])
+		]);
 	}
 
 }
