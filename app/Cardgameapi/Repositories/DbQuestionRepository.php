@@ -28,7 +28,7 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 
 	public function findByCategory($id)
 	{
-		return \Category::findOrFail($id)->questions()->with('answers')->get();
+		return $this->category->find($id)->questions()->with('answers')->get();
 	}
 
 	public function randomByCategory($id)
