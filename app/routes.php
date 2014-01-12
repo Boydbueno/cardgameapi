@@ -96,5 +96,7 @@ Route::group(array('prefix' => 'api/v1'), function()
 
 	Route::get('users/{id}', 'controllers\api\UsersController@show');
 
+	Route::get('users/{id}/questions', 'controllers\api\QuestionsController@byUser');
+
 	
 });

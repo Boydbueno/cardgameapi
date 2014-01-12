@@ -6,10 +6,12 @@ use Answer;
 class DbQuestionRepository implements QuestionRepositoryInterface {
 
 	protected $category;
+	protected $user;
 
-	public function __construct(CategoryRepositoryInterface $category)
+	public function __construct(CategoryRepositoryInterface $category, UserRepositoryInterface $user)
 	{
 		$this->category = $category;
+		$this->user = $user;
 	}
 
 	public function getAll()
@@ -35,6 +37,11 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 	public function randomByCategory($id)
 	{
 		return $this->category->find($id)->questions()->orderBy(\DB::raw('RAND()'))->get()->first();
+	}
+
+	public function findByUser($id)
+	{
+		return $this->user->find($id)->questions()->with('answers')->get();
 	}
 
 	public function create($question, $userid, Array $answers, Array $categories)

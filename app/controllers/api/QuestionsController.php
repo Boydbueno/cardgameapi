@@ -101,4 +101,21 @@ class QuestionsController extends \BaseController {
 		return Response::jsonOrJsonp($randomQuestion);
 	}
 
+	public function byUser($id)
+	{
+		try {
+
+			$questions = $this->question->findByUser($id);
+
+			return Response::jsonOrJsonp($questions);
+		
+		} catch(ModelNotFoundException $e) {
+		
+			return Response::jsonOrJsonp(array(
+				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
+			), 404);
+
+		}
+	}
+
 }
