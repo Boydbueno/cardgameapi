@@ -10,35 +10,35 @@ class QuestionsTableSeeder extends Seeder {
 		$questions = array(
 			array(
 				'question' => 'This will be a math question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			),			
 			array(
 				'question' => 'This will be another math question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			),
 			array(
 				'question' => 'This will be a science question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			),
 			array(
 				'question' => 'This will be another science question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			),
 			array(
 				'question' => 'This will be a food question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			),
 			array(
 				'question' => 'This will be another food question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			),
 			array(
 				'question' => 'This will be a history question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			),
 			array(
 				'question' => 'This will be another history question',
-				'correct_answer_id' => 1337
+				'user_id' => User::whereUsername('Admin')->first()->id
 			)
 		);
 
