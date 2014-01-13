@@ -3,4 +3,5 @@
 	<label>{{ $category->label }}</label>
 	<description>{{ $category->description }}</description>
 	<created_at>{{ $category->created_at->toDateString() }}</created_at>
+	<updated_at>{{ $category->updated_at->toDateString() }}</updated_at>
 </category>

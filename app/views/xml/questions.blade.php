@@ -13,6 +13,7 @@
 			</answers>
 			<author>{{ $question->author->username }}</author>
 			<created_at>{{ $question->created_at->toDateString() }}</created_at>
+			<updated_at>{{ $question->updated_at->toDateString() }}</updated_at>
 		</question>
 
 	@endforeach
