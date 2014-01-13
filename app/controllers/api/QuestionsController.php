@@ -31,7 +31,9 @@ class QuestionsController extends \BaseController {
 		}
 
 		if(Request::wantsXML()) {
-			return Response::XML($questions);
+			return Response::view('xml.questions', compact('questions'), 200, [
+				'Content-Type' => 'application/xml; charset=UTF-8'
+			]);
 		}
 
 		return Response::jsonOrJsonp($questions);
@@ -90,6 +92,12 @@ class QuestionsController extends \BaseController {
 
 			$questions = $this->question->findByCategory($id);
 
+			if(Request::wantsXML()) {
+				return Response::view('xml.questions', compact('questions'), 200, [
+					'Content-Type' => 'application/xml; charset=UTF-8'
+				]);
+			}
+
 			return Response::jsonOrJsonp($questions);
 		
 		} catch(ModelNotFoundException $e) {
@@ -107,6 +115,12 @@ class QuestionsController extends \BaseController {
 
 			$question = $this->question->find($id);
 
+			if(Request::wantsXML()) {
+				return Response::view('xml.question', compact('question'), 200, [
+					'Content-Type' => 'application/xml; charset=UTF-8'
+				]);
+			}
+
 			return Response::jsonOrJsonp($question);
 
 		} catch(ModelNotFoundException $e) {
@@ -122,12 +136,24 @@ class QuestionsController extends \BaseController {
 	{
 		$randomQuestion = $this->question->random();
 
+		if(Request::wantsXML()) {
+			return Response::view('xml.question', compact('question'), 200, [
+				'Content-Type' => 'application/xml; charset=UTF-8'
+			]);
+		}
+
 		return Response::jsonOrJsonp($randomQuestion);
 	}
 
 	public function randomByCategory($id)
 	{
 		$randomQuestion = $this->question->randomByCategory($id);
+
+		if(Request::wantsXML()) {
+			return Response::view('xml.question', compact('question'), 200, [
+				'Content-Type' => 'application/xml; charset=UTF-8'
+			]);
+		}
 		
 		return Response::jsonOrJsonp($randomQuestion);
 	}
@@ -137,6 +163,12 @@ class QuestionsController extends \BaseController {
 		try {
 
 			$questions = $this->question->findByUser($id);
+
+			if(Request::wantsXML()) {
+				return Response::view('xml.questions', compact('questions'), 200, [
+					'Content-Type' => 'application/xml; charset=UTF-8'
+				]);
+			}
 
 			return Response::jsonOrJsonp($questions);
 		
