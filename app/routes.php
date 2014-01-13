@@ -1,6 +1,6 @@
 <?php
 
-Route::group(array('prefix' => 'api/v1'), function()
+Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function()
 {
 
 	Route::post('games', function()
@@ -20,13 +20,13 @@ Route::group(array('prefix' => 'api/v1'), function()
 	*/
 
 	# Category collection routes
-	Route::get('categories', 'controllers\api\CategoriesController@index');
-	Route::post('categories', 'controllers\api\CategoriesController@create');
+	Route::get('categories', 'CategoriesController@index');
+	Route::post('categories', 'CategoriesController@create');
 
 	# Single Categorie routes
-	Route::get('categories/{id}', 'controllers\api\CategoriesController@show');
-	Route::put('categories/{id}', 'controllers\api\CategoriesController@update');
-	Route::delete('categories/{id}', 'controllers\api\CategoriesController@delete');
+	Route::get('categories/{id}', 'CategoriesController@show');
+	Route::put('categories/{id}', 'CategoriesController@update');
+	Route::delete('categories/{id}', 'CategoriesController@delete');
 
 	# Not allowed routes
 	Route::put('categories', function() {
@@ -54,18 +54,18 @@ Route::group(array('prefix' => 'api/v1'), function()
 	*/
 
 	# Question collection routes
-	Route::get('questions', 'controllers\api\QuestionsController@index');
-	Route::post('questions', 'controllers\api\QuestionsController@create');
+	Route::get('questions', 'QuestionsController@index');
+	Route::post('questions', 'QuestionsController@create');
 
 	# Single question routes
-	Route::get('questions/{id}', ['as' => 'question.show', 'uses' => 'controllers\api\QuestionsController@show']);
-	Route::get('categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
-	Route::delete('questions/{id}', 'controllers\api\QuestionsController@delete');
+	Route::get('questions/{id}', ['as' => 'question.show', 'uses' => 'QuestionsController@show']);
+	Route::get('categories/{id}/questions', 'QuestionsController@byCategory');
+	Route::delete('questions/{id}', 'QuestionsController@delete');
 
 	# Random question
-	Route::get('questions/random', 'controllers\api\QuestionsController@random');
+	Route::get('questions/random', 'QuestionsController@random');
 	# Random question 
-	Route::get('categories/{id}/questions/random', 'controllers\api\QuestionsController@randomByCategory');
+	Route::get('categories/{id}/questions/random', 'QuestionsController@randomByCategory');
 
 	# Not allowed routes
 	Route::put('questions', function() {
@@ -92,12 +92,12 @@ Route::group(array('prefix' => 'api/v1'), function()
 	|---------------------------------------------------------------------------
 	*/
 
-	Route::get('users', 'controllers\api\UsersController@index');
-	Route::post('users', 'controllers\api\UsersController@create');
+	Route::get('users', 'UsersController@index');
+	Route::post('users', 'UsersController@create');
 
-	Route::get('users/{id}', ['as' => 'user.show', 'uses' => 'controllers\api\UsersController@show']);
+	Route::get('users/{id}', ['as' => 'user.show', 'uses' => 'UsersController@show']);
 
-	Route::get('users/{id}/questions', 'controllers\api\QuestionsController@byUser');
+	Route::get('users/{id}/questions', 'QuestionsController@byUser');
 
 	
 });
