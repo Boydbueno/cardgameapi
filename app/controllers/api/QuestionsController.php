@@ -67,7 +67,13 @@ class QuestionsController extends \BaseController {
 	public function delete($id)
 	{
 
-		// Check is a user_id has been provided
+		if ( ! Input::get('user_id'))
+		{
+			return Response::jsonOrJsonp(array(
+				'message' => 'You need to supply a user_id if you wish to delete a question'
+			), 400);
+		}
+
 		// Check if the user_id is valid
 		// Check if the question matches with the user
 
