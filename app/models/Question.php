@@ -1,6 +1,8 @@
 <?php
 
 class Question extends Eloquent {
+
+	protected $hidden = ['pivot'];
 	
 	public function categories()
 	{
