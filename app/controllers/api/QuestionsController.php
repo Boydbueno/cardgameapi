@@ -58,6 +58,13 @@ class QuestionsController extends \BaseController {
 
 		$newQuestion = $this->question->create($question, $user_id, $answers, $categories);
 
+		if(Request::wantsXML()) {
+			return Response::view('xml.question', ['question' => $newQuestion], 201, [
+				'Content-Type' => 'application/xml; charset=UTF-8',
+				'location' => route('question.show', ['id' => $newQuestion->id])
+			]);
+		}
+
 		return Response::jsonOrJsonp($newQuestion, 201, [
 			'location' => route('question.show', ['id' => $newQuestion->id])
 		]);
