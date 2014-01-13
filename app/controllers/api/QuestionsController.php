@@ -19,7 +19,16 @@ class QuestionsController extends \BaseController {
 
 	public function index() 
 	{
-		$questions = $this->question->getAll();
+		$questions = $this->question;
+
+		if (Input::get('q'))
+		{
+			$questions = $questions->search(Input::get('q'));
+		}
+		else
+		{
+			$questions = $questions->getAll();
+		}
 
 		if(Request::wantsXML()) {
 			return Response::XML($questions);

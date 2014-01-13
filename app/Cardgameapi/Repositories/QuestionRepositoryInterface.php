@@ -6,6 +6,7 @@ interface QuestionRepositoryInterface {
 	public function getAll();
 	public function find($id);
 	public function random();
+	public function search($query);
 	public function findByCategory($id);
 	public function randomByCategory($id);
 	public function findByUser($id);

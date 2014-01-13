@@ -29,6 +29,11 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 		return Question::orderBy(\DB::raw('RAND()'))->with('answers')->get()->first();
 	}
 
+	public function search($query)
+	{
+		return Question::with('answers')->where('question', 'LIKE', '%'.$query.'%')->get();
+	}
+
 	public function findByCategory($id)
 	{
 		return $this->category->find($id)->questions()->with('answers')->get();
