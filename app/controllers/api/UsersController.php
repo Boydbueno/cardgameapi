@@ -2,6 +2,7 @@
 
 use Cardgameapi\Repositories\UserRepositoryInterface;
 use Response;
+use Request;
 use Input;
 
 class UsersController extends \BaseController {
@@ -15,12 +16,29 @@ class UsersController extends \BaseController {
 
 	public function index()
 	{
-		return $this->user->getAll();
+
+		$users = $this->user->getAll();
+
+		if(Request::wantsXML()) {
+			return Response::view('xml.users', compact('users'), 200, [
+				'Content-Type' => 'application/xml; charset=UTF-8'
+			]);
+		}
+
+		return Response::jsonOrJsonp($users);
 	}
 
 	public function show($id)
 	{
-		return $this->user->find($id);
+		$user = $this->user->find($id);
+
+		if(!Request::wantsXML()) {
+			return Response::view('xml.user', compact('user'), 200, [
+				'Content-Type' => 'application/xml; charset=UTF-8'
+			]);
+		}
+
+		return Response::jsonOrJsonp($user);
 	}
 
 	public function create()
