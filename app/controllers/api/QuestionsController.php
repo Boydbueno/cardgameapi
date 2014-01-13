@@ -53,6 +53,28 @@ class QuestionsController extends \BaseController {
 		
 	}
 
+	public function delete($id)
+	{
+
+		// Check is a user_id has been provided
+		// Check if the user_id is valid
+		// Check if the question matches with the user
+
+		try {
+			
+			$this->question->delete($id);
+			return Response::make(null, 204);
+
+		} catch(ModelNotFoundException $e) {
+
+			return Response::jsonOrJsonp(array(
+				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
+			), 404);
+
+		}
+
+	}
+
 	public function byCategory($id)
 	{
 		try {

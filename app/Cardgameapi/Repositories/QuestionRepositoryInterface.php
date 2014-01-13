@@ -10,5 +10,6 @@ interface QuestionRepositoryInterface {
 	public function randomByCategory($id);
 	public function findByUser($id);
 	public function create($question, $userid, Array $answers, Array $categories);
+	public function delete($id);
 
 }

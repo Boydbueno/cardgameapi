@@ -60,6 +60,7 @@ Route::group(array('prefix' => 'api/v1'), function()
 	# Single question routes
 	Route::get('questions/{id}', ['as' => 'question.show', 'uses' => 'controllers\api\QuestionsController@show']);
 	Route::get('categories/{id}/questions', 'controllers\api\QuestionsController@byCategory');
+	Route::delete('questions/{id}', 'controllers\api\QuestionsController@delete');
 
 	# Random question
 	Route::get('questions/random', 'controllers\api\QuestionsController@random');
