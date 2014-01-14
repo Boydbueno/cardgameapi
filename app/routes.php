@@ -13,6 +13,7 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function(
 		return $response;
 	});
 
+	# Documentation
 	Route::get('/', 'HomeController@index');
 
 	/*
@@ -57,17 +58,21 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function(
 
 	# Question collection routes
 	Route::get('questions', 'QuestionsController@index');
-	Route::post('questions', 'QuestionsController@create');
+	Route::get('users/{id}/questions', 'QuestionsController@byUser');
+	Route::get('categories/{id}/questions', 'QuestionsController@byCategory');
 
 	# Single question routes
 	Route::get('questions/{id}', ['as' => 'question.show', 'uses' => 'QuestionsController@show']);
-	Route::get('categories/{id}/questions', 'QuestionsController@byCategory');
-	Route::delete('questions/{id}', 'QuestionsController@delete');
 
-	# Random question
+	# Random question routes
 	Route::get('questions/random', 'QuestionsController@random');
-	# Random question 
 	Route::get('categories/{id}/questions/random', 'QuestionsController@randomByCategory');
+
+	# Create new question
+	Route::post('questions', 'QuestionsController@create');
+
+	# Delete question
+	Route::delete('questions/{id}', 'QuestionsController@delete');
 
 	# Not allowed routes
 	Route::put('questions', function() {
@@ -94,12 +99,12 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function(
 	|---------------------------------------------------------------------------
 	*/
 
+	# Users collection route
 	Route::get('users', 'UsersController@index');
-	Route::post('users', 'UsersController@create');
 
+	# Single User route
 	Route::get('users/{id}', ['as' => 'user.show', 'uses' => 'UsersController@show']);
-
-	Route::get('users/{id}/questions', 'QuestionsController@byUser');
-
 	
+	# Create new user
+	Route::post('users', 'UsersController@create');
 });
