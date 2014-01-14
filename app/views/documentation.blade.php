@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Api documentation</title>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+	{{ HTML::style('css/base.css') }}
 </head>
 <body>
 
