@@ -13,6 +13,8 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function(
 		return $response;
 	});
 
+	Route::get('/', 'HomeController@index');
+
 	/*
 	|---------------------------------------------------------------------------
 	| Category routes
