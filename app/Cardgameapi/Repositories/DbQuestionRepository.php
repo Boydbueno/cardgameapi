@@ -87,9 +87,9 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 		return $newQuestion;
 	}
 
-	public function delete($id) 
+	public function delete($id, $user_id) 
 	{
-		return Question::findOrFail($id)->delete();
+		return Question::where('user_id', '=', $user_id)->where('id', '=', $id)->delete();
 	}
 
 }

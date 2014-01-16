@@ -1,4 +1,4 @@
-PUT, DELETE
+DELETE
 
 All question routes with optional ?user_id
 

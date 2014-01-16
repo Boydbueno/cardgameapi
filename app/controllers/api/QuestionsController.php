@@ -42,14 +42,24 @@ class QuestionsController extends \BaseController {
 	public function create()
 	{
 
-		if ( ! Input::get('user_id'))
+		$user_id = Input::get('user_id');
+
+		if ( ! $user_id)
 		{
 			return Response::jsonOrJsonp(array(
 				'message' => 'You need to supply a user_id if you wish to add a question'
 			), 400);
 		}
 
-		// TODO: Check if user id is correct
+		try{
+
+			\User::findOrFail($user_id);
+
+		} catch(ModelNotFoundException $e) {
+			return Response::jsonOrJsonp(array(
+				'message' => 'The supplied user_id doesn\'t match any user'
+			), 400);
+		}
 		
 		$question = Input::get('question');
 		$user_id = Input::get('user_id');
@@ -74,14 +84,26 @@ class QuestionsController extends \BaseController {
 	public function delete($id)
 	{
 
-		if ( ! Input::get('user_id'))
+		$user_id = Input::get('user_id');
+
+		if ( ! $user_id)
 		{
 			return Response::jsonOrJsonp(array(
 				'message' => 'You need to supply a user_id if you wish to delete a question'
 			), 400);
 		}
 
-		// Check if the user_id is valid
+		try{
+
+			\User::findOrFail($user_id);
+
+		} catch(ModelNotFoundException $e) {
+			return Response::jsonOrJsonp(array(
+				'message' => 'The supplied user_id doesn\'t match any user'
+			), 400);
+		}
+
+		
 		// Check if the question matches with the user
 
 		try {
