@@ -17,14 +17,18 @@
 			<div class="endpoints-summary">
 				<ul>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/categories</span>
-						<span class="description">Get all categories</span>
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/categories</span>
+							<span class="description">Get all categories</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/categories/{category_id}</span>
-						<span class="description">Get basic information about a category</span>
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/categories/<code>category_id</code></span>
+							<span class="description">Get basic information about a category</span>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -37,44 +41,60 @@
 			<div class="endpoints-summary">
 				<ul>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/questions</span>
-						<span class="description">Get all questions</span>
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/questions</span>
+							<span class="description">Get all questions</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/questions/{question_id}</span>
-						<span class="description">Get basic information about a question</span> 
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/questions/<code>question_id</code></span>
+							<span class="description">Get basic information about a question</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/questions/random</span>
-						<span class="description">Get basic information about a random question</span>
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/questions/random</span>
+							<span class="description">Get basic information about a random question</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">POST</span>
-						<span class="endpoint">/questions?user_id={user_id}</span>
-						<span class="description">Get basic information about a question</span>
+						<a href="#">
+							<span class="verb">post</span>
+							<span class="uri">/questions</span>
+							<span class="description">Get basic information about a question</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">DELETE</span>
-						<span class="endpoint">/questions/{question_id}?user_id={user_id}</span>
-						<span class="description">Get basic information about a question</span>
+						<a href="#">
+							<span class="verb">delete</span>
+							<span class="uri">/questions/<code>question_id</code></span>
+							<span class="description">Get basic information about a question</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/categories/{category_id}/questions</span>
-						<span class="description">Get all questions from given category</span>
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/categories/<code>category_id</code>/questions</span>
+							<span class="description">Get all questions from given category</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/categories/{category_id}/questions/random</span>
-						<span class="description">Get a random questions from given category</span>
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/categories/<code>category_id</code>/questions/random</span>
+							<span class="description">Get a random questions from given category</span>
+						</a>
 					</li>
 					<li class="endpoint">
-						<span class="type">GET</span>
-						<span class="endpoint">/users/{user_id}/questions</span>
-						<span class="description">Get all questions from given user</span>
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/users/<code>user_id</code>/questions</span>
+							<span class="description">Get all questions from given user</span>
+						</a>
 					</li>
 				</ul>				
 			</div>
@@ -83,23 +103,31 @@
 
 		<section class="endpoint-group users">
 			<h1>User endpoints</h1>
-			<ul>
-				<li class="endpoint">
-					<span class="type">GET</span>
-					<span class="endpoint">/users</span>
-					<span class="description">Get all users</span>
-				</li>
-				<li class="endpoint">
-					<span class="type">POST</span>
-					<span class="endpoint">/users</span>
-					<span class="description">Create a new user</span>
-				</li>
-				<li class="endpoint">
-					<span class="type">GET</span>
-					<span class="endpoint">/users/{user_id}</span>
-					<span class="description">Get basic information from given user</span>
-				</li>
-			</ul>
+			<div class="endpoints-summary">			
+				<ul>
+					<li class="endpoint">
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/users</span>
+							<span class="description">Get all users</span>
+						</a>
+					</li>
+					<li class="endpoint">
+						<a href="#">
+							<span class="verb">post</span>
+							<span class="uri">/users</span>
+							<span class="description">Create a new user</span>
+						</a>
+					</li>
+					<li class="endpoint">
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/users/<code>user_id</code></span>
+							<span class="description">Get basic information from given user</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</section>
 
 	</div>

@@ -9,7 +9,8 @@ class UsersTableSeeder extends Seeder {
 
 		$users = array(
 			array(
-				'username' => 'Admin'
+				'username' => 'Admin',
+				'username' => 'Boyd'
 			)
 		);
 

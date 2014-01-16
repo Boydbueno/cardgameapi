@@ -4,6 +4,11 @@ body {
 	font-family: sans-serif;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
 ul {
 	list-style: none;
 	margin: 0;
@@ -27,3 +32,35 @@ h3, .delta {
 	margin: 0 auto;
 }
 
+.endpoints-summary {
+	margin-bottom: 40px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.endpoints-summary li {
+	padding: 9px 5px 10px 15px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.endpoints-summary li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.endpoints-summary li:last-child {
+	border-bottom: 0;
+}
+
+.verb {
+	float: left;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-right: 30px;
+	width: 50px;
+}
+
+.uri {
+	float: left;
+	padding-right: 50px;
+	width: 270px;
+}

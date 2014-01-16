@@ -1,6 +1,10 @@
 PUT, DELETE
 
-Meerdere representaties (xml/json)
+limit, offset
+
+All question routes with optional ?user_id
+
+Meerdere representaties (xml/json) (messages in xml)
 
 Opleveren 22/1/2014 9:00
 Webservice werkend online
