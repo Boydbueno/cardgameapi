@@ -3,16 +3,6 @@
 Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function()
 {
 
-	Route::post('games', function()
-	{
-		$game = new Game;
-		$game->save();
-		$response = Response::jsonOrJsonp($game, 201);
-		$response->header('Location', '/games/' . $game->id);
-		
-		return $response;
-	});
-
 	# Documentation
 	Route::get('/', 'HomeController@index');
 

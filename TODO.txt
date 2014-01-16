@@ -1,7 +1,5 @@
 PUT, DELETE
 
-limit, offset
-
 All question routes with optional ?user_id
 
 Opleveren 22/1/2014 9:00
