@@ -27,7 +27,7 @@
 						<a href="#">
 							<span class="verb">get</span>
 							<span class="uri">/categories/<code>category_id</code></span>
-							<span class="description">Get basic information about a category</span>
+							<span class="description">Get the information about a category</span>
 						</a>
 					</li>
 				</ul>
@@ -51,28 +51,28 @@
 						<a href="#">
 							<span class="verb">get</span>
 							<span class="uri">/questions/<code>question_id</code></span>
-							<span class="description">Get basic information about a question</span>
+							<span class="description">Get the information about a question</span>
 						</a>
 					</li>
 					<li class="endpoint">
 						<a href="#">
 							<span class="verb">get</span>
 							<span class="uri">/questions/random</span>
-							<span class="description">Get basic information about a random question</span>
+							<span class="description">Get the information about a random question</span>
 						</a>
 					</li>
 					<li class="endpoint">
 						<a href="#">
 							<span class="verb">post</span>
 							<span class="uri">/questions</span>
-							<span class="description">Get basic information about a question</span>
+							<span class="description">Get the information about a question</span>
 						</a>
 					</li>
 					<li class="endpoint">
 						<a href="#">
 							<span class="verb">delete</span>
 							<span class="uri">/questions/<code>question_id</code></span>
-							<span class="description">Get basic information about a question</span>
+							<span class="description">Get the information about a question</span>
 						</a>
 					</li>
 					<li class="endpoint">
@@ -123,7 +123,7 @@
 						<a href="#">
 							<span class="verb">get</span>
 							<span class="uri">/users/<code>user_id</code></span>
-							<span class="description">Get basic information from given user</span>
+							<span class="description">Get the information from given user</span>
 						</a>
 					</li>
 				</ul>

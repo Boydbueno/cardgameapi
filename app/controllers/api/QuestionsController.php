@@ -23,11 +23,11 @@ class QuestionsController extends \BaseController {
 
 		if (Input::get('q'))
 		{
-			$questions = $questions->search(Input::get('q'));
+			$questions = $questions->search(Input::get('q'), Input::get('limit'), Input::get('offset'));
 		}
 		else
 		{
-			$questions = $questions->getAll();
+			$questions = $questions->getAll(Input::get('limit'), Input::get('offset'));
 		}
 
 		if(Request::wantsXML()) {
@@ -103,7 +103,7 @@ class QuestionsController extends \BaseController {
 	{
 		try {
 
-			$questions = $this->question->findByCategory($id);
+			$questions = $this->question->findByCategory($id, Input::get('limit'), Input::get('offset'));
 
 			if(Request::wantsXML()) {
 				return Response::view('xml.questions', compact('questions'), 200, [
@@ -175,7 +175,7 @@ class QuestionsController extends \BaseController {
 	{
 		try {
 
-			$questions = $this->question->findByUser($id);
+			$questions = $this->question->findByUser($id, Input::get('limit'), Input::get('offset'));
 
 			if(Request::wantsXML()) {
 				return Response::view('xml.questions', compact('questions'), 200, [
