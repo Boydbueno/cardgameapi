@@ -17,7 +17,7 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 
-		$users = $this->user->getAll();
+		$users = $this->user->getAll(Input::get('limit'), Input::get('offset'));
 
 		if(Request::wantsXML()) {
 			return Response::view('xml.users', compact('users'), 200, [

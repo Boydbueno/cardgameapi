@@ -2,7 +2,7 @@
 
 interface UserRepositoryInterface {
 
-	public function getAll();
+	public function getAll($limit, $offset);
 	public function find($id);
 	public function create($username);
 

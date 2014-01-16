@@ -4,9 +4,14 @@ use User;
 
 class DbUserRepository implements UserRepositoryInterface {
 
-	public function getAll()
+	public function getAll($limit = 20, $offset = 0)
 	{
-		return User::all();
+		$users = new User;
+
+		if($limit) $users = $users->take($limit);
+		if($offset) $users = $users->skip($offset);
+
+		return $users->get();
 	}
 
 	public function find($id)
