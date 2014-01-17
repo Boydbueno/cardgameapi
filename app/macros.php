@@ -13,9 +13,15 @@ Response::macro('jsonOrJsonp', function($value, $statusCode = "200", $headers = 
 	return $response;
 });
 
-Response::macro('XML', function($value, $statusCode = 200, $headers = [])
+Response::macro('error', function($message, $statusCode = 400)
 {
-	$data = $value->toArray();
+	if(Request::wantsXML()) {
+		return Response::view('xml.error', compact('message'), $statusCode, [
+			'Content-Type' => 'application/xml; charset=UTF-8'
+		]);
+	}
 
-	return Cardgameapi\XML\XML::create($data);
+	return Response::jsonOrJsonp(array(
+		'message' => $message
+	), 400);
 });

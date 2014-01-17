@@ -23,21 +23,15 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function(
 
 	# Not allowed routes
 	Route::put('categories', function() {
-		return Response::jsonOrJsonp(array(
-			'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
-		), 405);
+		return Response::error('You are not allowed to send a PUT request to this collection. Did you forget to add an id?', 405);
 	});
 
 	Route::delete('categories', function() {
-		return Response::jsonOrJsonp(array(
-			'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
-		), 405);
+		return Response::error('You are not allowed to send a DELETE request to this collection. Did you forget to add an id?', 405);
 	});
 
 	Route::post('categories/{id}', function() {
-		return Response::jsonOrJsonp(array(
-			'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
-		), 405);
+		return Response::error('You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?', 405);
 	});
 
 	/*
@@ -66,21 +60,15 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function(
 
 	# Not allowed routes
 	Route::put('questions', function() {
-		return Response::jsonOrJsonp(array(
-			'message' => 'You are not allowed to send a PUT request to this collection. Did you forget to add an id?'
-		), 405);
+		return Response::error('You are not allowed to send a PUT request to this collection. Did you forget to add an id?', 405);
 	});
 
 	Route::delete('questions', function() {
-		return Response::jsonOrJsonp(array(
-			'message' => 'You are not allowed to send a DELETE request to this collection. Did you forget to add an id?'
-		), 405);
+		return Response::error('You are not allowed to send a DELETE request to this collection. Did you forget to add an id?', 405);
 	});
 
 	Route::post('questions/{id}', function() {
-		return Response::jsonOrJsonp(array(
-			'message' => 'You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?'
-		), 405);
+		return Response::error('You are not allowed to send a POST request to this resource. Did you mean to add a new item to the collection?', 405);
 	});
 
 	/*

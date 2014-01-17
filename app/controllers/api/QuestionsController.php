@@ -44,11 +44,9 @@ class QuestionsController extends \BaseController {
 
 		$user_id = Input::get('user_id');
 
-		if ( ! $user_id)
+		if ( ! $user_id )
 		{
-			return Response::jsonOrJsonp(array(
-				'message' => 'You need to supply a user_id if you wish to add a question'
-			), 400);
+			return Response::error('You need to supply a user_id if you wish to add a question');
 		}
 
 		try{
@@ -56,9 +54,9 @@ class QuestionsController extends \BaseController {
 			\User::findOrFail($user_id);
 
 		} catch(ModelNotFoundException $e) {
-			return Response::jsonOrJsonp(array(
-				'message' => 'The supplied user_id doesn\'t match any user'
-			), 400);
+
+			return Response::error('The supplied user_id doesn\'t match any user');
+
 		}
 		
 		$question = Input::get('question');
@@ -86,11 +84,9 @@ class QuestionsController extends \BaseController {
 
 		$user_id = Input::get('user_id');
 
-		if ( ! $user_id)
+		if ( ! $user_id )
 		{
-			return Response::jsonOrJsonp(array(
-				'message' => 'You need to supply a user_id if you wish to delete a question'
-			), 400);
+			return Response::error('You need to supply a user_id if you wish to delete a question');
 		}
 
 		try{
@@ -98,13 +94,13 @@ class QuestionsController extends \BaseController {
 			\User::findOrFail($user_id);
 
 		} catch(ModelNotFoundException $e) {
-			return Response::jsonOrJsonp(array(
-				'message' => 'The supplied user_id doesn\'t match any user'
-			), 400);
+
+			return Response::error('The supplied user_id doesn\'t match any user');
+
 		}
 
 		
-		// Check if the question matches with the user
+		// Todo: Check if the question matches with the user
 
 		try {
 			
@@ -113,9 +109,7 @@ class QuestionsController extends \BaseController {
 
 		} catch(ModelNotFoundException $e) {
 
-			return Response::jsonOrJsonp(array(
-				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
-			), 404);
+			return Response::error('This resource does not exist. Possibly the resource has been deleted, please double check the id', 404);
 
 		}
 
@@ -137,9 +131,7 @@ class QuestionsController extends \BaseController {
 		
 		} catch(ModelNotFoundException $e) {
 		
-			return Response::jsonOrJsonp(array(
-				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
-			), 404);
+			return Response::error('This resource does not exist. Possibly the resource has been deleted, please double check the id', 404);
 
 		}
 	}
@@ -160,9 +152,7 @@ class QuestionsController extends \BaseController {
 
 		} catch(ModelNotFoundException $e) {
 
-		    return Response::jsonOrJsonp(array(
-		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
-	    	), 404);
+		    return Response::error('This resource does not exist. Possibly the resource has been deleted, please double check the id', 404);
 
 		}
 	}
@@ -209,9 +199,7 @@ class QuestionsController extends \BaseController {
 		
 		} catch(ModelNotFoundException $e) {
 		
-			return Response::jsonOrJsonp(array(
-				'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
-			), 404);
+			return Response::error('This resource does not exist. Possibly the resource has been deleted, please double check the id', 404);
 
 		}
 	}
