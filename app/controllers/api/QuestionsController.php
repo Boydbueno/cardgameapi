@@ -7,6 +7,7 @@ use Category;
 use Response;
 use Request;
 use Input;
+use User;
 
 class QuestionsController extends \BaseController {
 
@@ -51,7 +52,7 @@ class QuestionsController extends \BaseController {
 
 		try{
 
-			\User::findOrFail($user_id);
+			User::findOrFail($user_id);
 
 		} catch(ModelNotFoundException $e) {
 
@@ -91,7 +92,7 @@ class QuestionsController extends \BaseController {
 
 		try{
 
-			\User::findOrFail($user_id);
+			User::findOrFail($user_id);
 
 		} catch(ModelNotFoundException $e) {
 
