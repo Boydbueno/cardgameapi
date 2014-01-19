@@ -42,6 +42,7 @@ class QuestionsController extends \BaseController {
 
 	public function create()
 	{
+		// TODO: Way too much going on here. Extract into a service
 
 		$user_id = Input::get('user_id');
 
