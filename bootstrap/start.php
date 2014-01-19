@@ -11,7 +11,8 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application;
+$request = Cardgameapi\Http\Request::createFromGlobals();
+$app = new Illuminate\Foundation\Application($request);
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('Boyd-PC'),
+	'local' => array('Boyd-PC', 'Boyd-VAIO'),
 
 ));
 

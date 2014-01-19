@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddCorrectAnswerToQuestionsTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,13 @@ class AddCorrectAnswerToQuestionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('questions', function(Blueprint $table) {
-			$table->integer('correct_answer_id')->unsigned();
+		Schema::create('users', function(Blueprint $table) {
+			$table->increments('id');
+			$table->string('username');
+			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.
@@ -24,9 +27,7 @@ class AddCorrectAnswerToQuestionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('questions', function(Blueprint $table) {
-			$table->drop('correct_answer_id');
-		});
+		Schema::drop('users');
 	}
 
 }

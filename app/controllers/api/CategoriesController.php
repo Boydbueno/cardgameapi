@@ -1,11 +1,12 @@
 <?php namespace controllers\api;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Cardgameapi\Repositories\CategoryRepositoryInterface;
-use Category;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-use Input;
+use Category;
 use Response;
+use Request;
+use Input;
 
 
 class CategoriesController extends \BaseController {
@@ -25,21 +26,21 @@ class CategoriesController extends \BaseController {
 
 	public function index()
 	{
-		$response = $this->category->getAll();
+		$categories = $this->category->getAll();
 
-		return Response::jsonOrJsonp($response);
+		if(Request::wantsXML()) {
+			return Response::view('xml.categories', compact('categories'), 200, [
+				'Content-Type' => 'application/xml; charset=UTF-8'
+			]);
+		}
+
+		return Response::jsonOrJsonp($categories);
 	}
 
 	public function create()
 	{
 		// TODO: Implement creating new category
-		// This route will need authorization
-		
-		// If this request is send by a user, it'll be added to the user categories
-		
-		return Response::jsonOrJsonp(array(
-			'message' => 'It is not possible to create new categories yet. This is a future feature.'
-		), 501);
+		return Response::error('It is not possible to create new categories yet. This is a future feature.', 501);
 	}
 
 	/*
@@ -52,31 +53,31 @@ class CategoriesController extends \BaseController {
 	{
 		try {
 
-			$response = $this->category->find($id);
+			$category = $this->category->find($id);
 
-			return Response::jsonOrJsonp($response);
+			if(Request::wantsXML()) {
+				return Response::view('xml.category', compact('category'), 200, [
+					'Content-Type' => 'application/xml; charset=UTF-8'
+				]);
+			}
+
+			return Response::jsonOrJsonp($category);
 
 		} catch(ModelNotFoundException $e) {
 
-		    return Response::jsonOrJsonp(array(
-		    	'message' => 'This resource does not exist. Possibly the resource has been deleted, please double check the id'
-	    	), 404);
+		    return Response::error('This resource does not exist. Possibly the resource has been deleted, please double check the id', 404);
 
 		}
 	}
 
 	public function update($id)
 	{
-		return Response::jsonOrJsonp(array(
-			'message' => 'It is not possible to update a category yet. This is a future feature.'
-		), 501);
+		return Response::error('It is not possible to update a category yet. This is a future feature.', 501);
 	}
 
 	public function delete($id)
 	{
-		return Response::jsonOrJsonp(array(
-			'message' => 'It is not possible to delete a category yet. This is a future feature.'
-		), 501);
+		return Response::error('It is not possible to delete a category yet. This is a future feature.', 501);
 	}
 
 }
