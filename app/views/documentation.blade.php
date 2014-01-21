@@ -9,8 +9,57 @@
 <body>
 
 	<div class="container">
-		<h1>This will be my awesome documentation!</h1>
+		<h1>Questions documentation!</h1>
+
+		<p>
+			This API allows the retrieval of some kind of quiz or trivia questions.
+			You can retrieve random questions, questions by an id and a list of all questions.
+		</p>
+
+		<p>
+			Because the questions are categorized, it's also possible to retrieve a random question from a certain category, or all questions from a category
+		</p>
+
+		<p>
+			Users can also add their own question to the collection, but they'll need to provide their user_id as some sort of authentication measurement.
+		</p>
+
+
 		
+		<p>
+			The baseurl you should use is <code>{{ $_SERVER['HTTP_HOST'] }}/api/v1</code>
+		</p>
+			
+
+		<section class="endpoint-group users">
+			<h1>User endpoints</h1>
+			<div class="endpoints-summary">			
+				<ul>
+					<li class="endpoint">
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/users</span>
+							<span class="description">Get all users</span>
+						</a>
+					</li>
+					<li class="endpoint">
+						<a href="#">
+							<span class="verb">post</span>
+							<span class="uri">/users</span>
+							<span class="description">Create a new user</span>
+						</a>
+					</li>
+					<li class="endpoint">
+						<a href="#">
+							<span class="verb">get</span>
+							<span class="uri">/users/<code>user_id</code></span>
+							<span class="description">Get the information from given user</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
 		<section class="endpoint-group categories">
 			<header><h1>Category endpoints</h1></header>
 
@@ -99,35 +148,6 @@
 				</ul>				
 			</div>
 
-		</section>
-
-		<section class="endpoint-group users">
-			<h1>User endpoints</h1>
-			<div class="endpoints-summary">			
-				<ul>
-					<li class="endpoint">
-						<a href="#">
-							<span class="verb">get</span>
-							<span class="uri">/users</span>
-							<span class="description">Get all users</span>
-						</a>
-					</li>
-					<li class="endpoint">
-						<a href="#">
-							<span class="verb">post</span>
-							<span class="uri">/users</span>
-							<span class="description">Create a new user</span>
-						</a>
-					</li>
-					<li class="endpoint">
-						<a href="#">
-							<span class="verb">get</span>
-							<span class="uri">/users/<code>user_id</code></span>
-							<span class="description">Get the information from given user</span>
-						</a>
-					</li>
-				</ul>
-			</div>
 		</section>
 
 	</div>
