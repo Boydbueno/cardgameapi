@@ -15,6 +15,10 @@
 			This API allows the retrieval of some kind of quiz or trivia questions.
 			You can retrieve random questions, questions by an id and a list of all questions.
 		</p>
+		
+		<p>
+			The baseurl is <code>{{ $_SERVER['HTTP_HOST'] }}/api/v1</code>
+		</p>
 
 		<p>
 			Because the questions are categorized, it's also possible to retrieve a random question from a certain category, or all questions from a category
@@ -22,14 +26,18 @@
 
 		<p>
 			Users can also add their own question to the collection, but they'll need to provide their user_id as some sort of authentication measurement.
+			This same methods allows deleting and updating questions.
 		</p>
 
-
-		
 		<p>
-			The baseurl you should use is <code>{{ $_SERVER['HTTP_HOST'] }}/api/v1</code>
+			All endpoints return either json by default. If you want xml you can use the Accept header:<br />
+			<code>Accept: application/xml</code>  
 		</p>
-			
+
+		<p>
+			Endpoints that return an array of objects can make use of the limit and offset parameters: <br />
+			<code>/questions?limit=10&amp;offset=20</code>
+		</p>
 
 		<section class="endpoint-group users">
 			<h1>User endpoints</h1>
