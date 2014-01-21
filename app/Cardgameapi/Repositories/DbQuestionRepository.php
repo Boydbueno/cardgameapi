@@ -87,6 +87,29 @@ class DbQuestionRepository implements QuestionRepositoryInterface {
 		return $newQuestion;
 	}
 
+	public function update($id, $question, Array $answers, Array $categories)
+	{
+
+		$questionToUpdate = Question::with('answers')->findOrFail($id);
+		
+		if($question) $questionToUpdate->question = $question;
+		if($answers) {
+			$answersModels = array_map(function($answer) {
+				return new Answer(array('answer' => $answer));
+			}, $answers);
+
+			$questionToUpdate->answers()->delete();
+			$questionToUpdate->answers()->saveMany($answersModels);
+		}
+
+		if($categories) $questionToUpdate->categories()->sync($categories);
+
+		$questionToUpdate->save();
+
+		return $questionToUpdate;
+
+	}
+
 	public function delete($id, $user_id) 
 	{
 		return Question::where('user_id', '=', $user_id)->where('id', '=', $id)->delete();

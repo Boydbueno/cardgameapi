@@ -58,6 +58,9 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'controllers\api'], function(
 	# Delete question
 	Route::delete('questions/{id}', 'QuestionsController@delete');
 
+	# Update question
+	Route::put('questions/{id}', 'QuestionsController@update');
+
 	# Not allowed routes
 	Route::put('questions', function() {
 		return Response::error('You are not allowed to send a PUT request to this collection. Did you forget to add an id?', 405);
