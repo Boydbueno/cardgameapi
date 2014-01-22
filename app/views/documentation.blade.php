@@ -30,7 +30,7 @@
 		</p>
 
 		<p>
-			All endpoints return either json by default. If you want xml you can use the Accept header:<br />
+			All endpoints return json by default. If you want xml you can use the Accept header:<br />
 			<code>Accept: application/xml</code>  
 		</p>
 
