@@ -25,6 +25,8 @@ h2, .beta {
 
 h3, .delta {
 	font-family: 'Droid Sans', sans-serif;
+	margin-top: 0;
+	font-size: 14px;
 }
 
 .container {
@@ -63,4 +65,39 @@ h3, .delta {
 	float: left;
 	padding-right: 50px;
 	width: 270px;
+}
+
+.user-endpoints,
+.category-endpoints,
+.question-endpoints {
+	margin-bottom: 40px;
+}
+
+.endpoint-description {
+	margin-bottom: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.endpoint-description header {
+	padding: 9px 5px 10px 15px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.endpoint-description header:before,
+.endpoint-description header:after {
+    content: " ";
+    display: table;
+}
+
+.endpoint-description header:after {
+    clear: both;
+}
+
+.endpoint-description section {
+	padding: 9px 5px 10px 15px;
+}
+
+.url {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }

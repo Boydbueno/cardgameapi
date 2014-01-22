@@ -146,7 +146,7 @@ class QuestionsController extends \BaseController {
 
 		try {
 			
-			$this->question->delete($id);
+			$this->question->delete($id, $user_id);
 			return Response::make(null, 204);
 
 		} catch(ModelNotFoundException $e) {
