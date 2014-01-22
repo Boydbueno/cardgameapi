@@ -17,7 +17,7 @@
 		</p>
 		
 		<p>
-			The baseurl is http://<code>{{ $_SERVER['HTTP_HOST'] }}/api/v1</code>
+			The baseurl is: <code>http://{{ $_SERVER['HTTP_HOST'] }}/api/v1</code>
 		</p>
 
 		<p>
