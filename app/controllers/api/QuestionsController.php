@@ -66,6 +66,9 @@ class QuestionsController extends \BaseController {
 		$answers = json_decode(Input::get('answers'));
 		$categories = json_decode(Input::get('categories'));
 
+		// TODO: Pass answer models instead of an array
+		// TODO: Pass category models instead of an array
+
 		$newQuestion = $this->question->create($question, $user_id, $answers, $categories);
 
 		if(Request::wantsXML()) {
@@ -79,6 +82,43 @@ class QuestionsController extends \BaseController {
 			'location' => route('question.show', ['id' => $newQuestion->id])
 		]);
 		
+	}
+
+	public function update($id) {
+		$input = Input::all();
+		$user_id = $input['user_id'];
+
+		$question = $input['question'];
+		$answers = json_decode($input['answers']);
+		$categories = json_decode($input['categories']);
+
+		if ( ! $user_id )
+		{
+			return Response::error('You need to supply a user_id if you wish to delete a question');
+		}
+
+		try{
+
+			User::findOrFail($user_id);
+
+		} catch(ModelNotFoundException $e) {
+
+			return Response::error('The supplied user_id doesn\'t match any user');
+
+		}
+		$questionToUpdate = $this->question->update($id, $question, $answers, $categories);
+
+		if(Request::wantsXML()) {
+			return Response::view('xml.question', ['question' => $questionToUpdate], 200, [
+				'Content-Type' => 'application/xml; charset=UTF-8',
+				'location' => route('question.show', ['id' => $questionToUpdate->id])
+			]);
+		}
+
+		return Response::jsonOrJsonp($questionToUpdate, 200, [
+			'location' => route('question.show', ['id' => $questionToUpdate->id])
+		]);
+
 	}
 
 	public function delete($id)
@@ -106,7 +146,7 @@ class QuestionsController extends \BaseController {
 
 		try {
 			
-			$this->question->delete($id);
+			$this->question->delete($id, $user_id);
 			return Response::make(null, 204);
 
 		} catch(ModelNotFoundException $e) {

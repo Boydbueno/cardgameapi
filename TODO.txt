@@ -1,6 +1,4 @@
-DELETE
-
-All question routes with optional ?user_id
+PUT
 
 Opleveren 22/1/2014 9:00
 Webservice werkend online
